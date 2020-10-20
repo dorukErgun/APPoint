@@ -1,25 +1,25 @@
 body{
-    background: #dd2c00; 
+    background: #DD2C00; 
     margin-top: 70px;
 }
 
 .jumbotron{
-    background: #b2ebf2;   
+    background: #B2EBF2;   
 }
 
 .navbar{
-    background-color: #00bcd4;
+    background-color: #00BCD4;
 }
 
 .card{
-    background-color: #ff5722; 
+    background-color: #FF5722; 
     border-radius: 10%;
     text-align: center;
     padding: 10px;
 }
 
 .card:hover{
-    background-color: #fa1616;
+    background-color: #DD2C00;
     padding: 0px;
 }
 
