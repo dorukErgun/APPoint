@@ -1,0 +1,39 @@
+body{
+    background: #DD2C00; 
+    margin-top: 70px;
+}
+
+.jumbotron{
+    background: #B2EBF2;   
+}
+
+.navbar{
+    background-color: #00BCD4;
+}
+
+.card{
+    background-color: #FF5722; 
+    border-radius: 10%;
+    text-align: center;
+    padding: 10px;
+}
+
+.card:hover{
+    background-color: #DD2C00;
+    padding: 0px;
+}
+
+.card-img-top{
+    border-radius: 10%;
+}
+
+.card-title{
+    color: white;
+    margin-top: 30px;
+}
+
+.navbar-text{
+    color: white;
+}
+
+
