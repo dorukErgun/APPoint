@@ -1,4 +1,6 @@
-
+html,body{
+    height:100%;
+}
 body{
     background: #B2EBF2; 
     margin-top: 70px;

@@ -1,0 +1,54 @@
+body{
+    background: #B2EBF2; 
+    margin-top: 70px;
+    height:100%;
+    
+}
+
+html,body{
+    height:100%;
+}
+
+.jumbotron{
+    background: #DD2C00;   
+}
+
+.navbar{
+    background-color: #00BCD4;
+}
+
+.navbar-text{
+    color: white;
+}
+
+.photoholder{
+    padding-top: 35px;
+    width: 100%;
+    display: block;
+}
+
+.facilityphoto{
+    background-repeat:no-repeat;
+    background-size:100%;
+    min-height: 100%;
+    min-width: 100%;
+    display: block;
+    background-image: url("../images/facilityphotox.jpg");
+    text-align: center;
+}
+
+.fill {
+    background-size:100%;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/facilityphotox.jpg");
+}
+
+.hr-under-placename{
+    border: 2px solid;
+    border-radius: 75%;
+}
+
