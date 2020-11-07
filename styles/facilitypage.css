@@ -48,7 +48,12 @@ html,body{
 }
 
 .hr-under-placename{
-    border: 2px solid;
+    border: 12px solid;
     border-radius: 75%;
 }
 
+.xdsoft_datetimepicker .xdsoft_datepicker {
+	width: 224px;
+	float: left;
+	margin-left: 8px;
+}
