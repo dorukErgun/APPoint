@@ -2,6 +2,8 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
+
 
 mongoose.connect('mongodb+srv://admin:admin@cluster0.mwbbr.mongodb.net/user?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => 
@@ -14,7 +16,15 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0.mwbbr.mongodb.net/user?retr
     console.log(e);
 })
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
+// publicten static page çekilecek
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public/html')));
+app.use(express.static(path.join(__dirname, '/public/css')));
+app.use(express.json()); // json parser
+app.use(express.urlencoded({extended: true})); // bu kısım formdan gelen datanın json formatına gelmesi için
 // user schema
 const userSchema = new mongoose.Schema(
     {
@@ -27,28 +37,29 @@ const userSchema = new mongoose.Schema(
         gender: String,
         isCustomer: Boolean
     })
-
 const User = mongoose.model('User', userSchema);
 
 
-// publicten static page çekilecek
-app.use(express.static('public'));
 
 
-app.use(express.urlencoded({extended: true})); // bu kısım formdan gelen datanın json formatına gelmesi için
+
+app.get('/', (req, res) =>
+{
+    res.sendFile(__dirname + '/public/html/home.html');
+})
 
 
 app.get('/signup', (req, res) =>
 {
-    res.send("DJJDSHF");
+    res.sendFile(__dirname + '/public/html/signup.html');
 })
 
 app.post('/signup', (req, res) =>
 {
     const {firstname,lastname,email,password,confirm_password,month,day,year,gender} = req.body;
-    console.log(`${firstname} ${lastname} ${email} ${password} ${confirm_password} `);
-    console.log(`${month} ${day} ${year} ${gender}`);
-    var birthDate = day + "/" + month + "/" + year;
+    console.log(req.body);
+    console.log(email);
+    var birthDate = day + "/" + month + "/" + year; // gün/ay/yıl format
     const newUser = new User(
         {
         firstName: firstname,
@@ -73,8 +84,7 @@ app.post('/signup', (req, res) =>
     })
 
 
-
-    res.send("POST SIGNUP");
+    res.sendFile(__dirname + '/public/html/index.html');
 })
 
 
