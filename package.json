@@ -2,24 +2,23 @@
   "name": "APPoint",
   "version": "1.0.0",
   "description": "",
-  "main": "jquery.datetimepicker.full.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dbasibuyuk/APPoint.git"
+    "url": "git+https://github.com/dorukErgun/APPoint.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dbasibuyuk/APPoint/issues"
+    "url": "https://github.com/dorukErgun/APPoint/issues"
   },
-  "homepage": "https://github.com/dbasibuyuk/APPoint#readme",
+  "homepage": "https://github.com/dorukErgun/APPoint#readme",
   "dependencies": {
     "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.11.1"
+    "express": "^4.17.1"
   }
 }
