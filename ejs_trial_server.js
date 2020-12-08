@@ -24,12 +24,14 @@ app.get('/:facilitytype', (req, res) => {
     }
 })
 
+
 app.get('/:facilitytype/:facility', (req, res) => {
-    const { facility } = req.params;
-    const data = facilityData[facility];
-    console.log("sad");
+    const { facilitytype } = req.params;
+    console.log(facilitytype)
+    const data = facilityData[facilitytype];
+    const facdata = data.facilities;
     if(data){
-        res.render('facility', { ...data });
+        res.render('facility', { ...facdata });
     } else {
         res.render('notfound', { facility });
     }

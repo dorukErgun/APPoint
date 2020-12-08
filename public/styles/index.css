@@ -5,6 +5,18 @@ body{
 
 .jumbotron{
     background: #B2EBF2;   
+    background-repeat: no-repeat;
+    background-image: url("../images/calendar1.png");
+    background-position: right 150px top;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+@media screen and (max-width: 600px) {
+    .jumbotron {
+        background-image: none;
+    }
 }
 
 .navbar{
@@ -35,6 +47,13 @@ body{
 
 .navbar-text{
     color: white;
+}
+
+
+.copyright{
+    color: #FF5722;
+    padding: 25px;
+    background-color: gray
 }
 
 

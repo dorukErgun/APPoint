@@ -3,8 +3,8 @@
         "name": "Health Clinics",
         "facilities": [
             {
-                "name": "X Clinic",
-                "link": "xclinic",
+                "name": "xclinic",
+                "full_name": "X Clinic",
                 "about_the_facility": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, labore."
                 
             },

@@ -57,9 +57,11 @@
                       <img class="card-img-top" src="/images/facilityphoto.jpg" alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title"><%= facility.name %></h5>
-                        <p class="card-text"><%= facility.about_the_facility %></p>  
-                        <a href="https://localhost:3000/<%= name.replace(/\s/g, "").toLowerCase(); %>/<%= facility.name.replace(/\s/g, "").toLowerCase();%>/" class="btn btn-sm  btn-outline-success">Randevu Al</a>
-                      </div>
+                        <p class="card-text"><%= facility.about_the_facility %></p>
+                        <form action="http://localhost:3000/<%= name.replace(/\s/g, "").toLowerCase(); %>/<%= facility.name.replace(/\s/g, "").toLowerCase();%>" method="get" accept-charset="utf-8" class="form" role="form"> 
+                        <button class="btn btn-sm  btn-outline-success">Randevu Al</button>
+                        </form> 
+                    </div>
                   </div>
                 </div>
                 <% } %>
