@@ -27,9 +27,6 @@ app.get('/:facilitytype', (req, res) => {
 
 app.get('/:facilitytype/:facility', (req, res) => {
     const { facilitytype } = req.params;
-    console.log(facilitytype)
-    const data = facilityData[facilitytype];
-    const facdata = data.facilities;
     if(data){
         res.render('facility', { ...facdata });
     } else {
