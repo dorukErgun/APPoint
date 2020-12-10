@@ -3,50 +3,72 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
-
+const bcrypt = require('bcrypt');
+const session = require('express-session');
+const User = require('./models/user');
 
 mongoose.connect('mongodb+srv://admin:admin@cluster0.mwbbr.mongodb.net/user?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => 
 {
-    console.log("CONNECTED!");
+    console.log("Database Connected!");
 })
 .catch((e) => 
 {
     console.log('Error!');
     console.log(e);
 })
+mongoose.set('useCreateIndex', true); // for deprecation warning
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// publicten static page çekilecek
+// for static pages
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '/public/html')));
 app.use(express.static(path.join(__dirname, '/public/css')));
 app.use(express.json()); // json parser
 app.use(express.urlencoded({extended: true})); // bu kısım formdan gelen datanın json formatına gelmesi için
-// user schema
-const userSchema = new mongoose.Schema(
-    {
-        firstName: String,
-        lastName: String,
-        email: String,
-        password: String,
-        confirmPassword: String,
-        birthDate: String,
-        gender: String,
-        isCustomer: Boolean
-    })
-const User = mongoose.model('User', userSchema);
 
+app.use(session({secret: "not a good secret",
+                resave: true,
+                saveUninitialized: true}));
+
+const requireLogin = (req, res, next) => 
+{
+    // if you are not logged in
+    if(!req.session.user_id)
+    {
+        res.redirect('/login');
+    }
+    else
+    {
+        next();
+    }
+}
 
 
 
 
 app.get('/', (req, res) =>
-{
-    res.sendFile(__dirname + '/public/html/home.html');
+{  
+    if(req.session.user_id)
+    {
+        res.sendFile(__dirname + '/public/html/home.html');
+    }
+    else
+    {
+
+        res.redirect('/login');
+    }
 })
+
+/* when logout button arrives, it will run
+app.post('/logout', (req, res) =>
+{
+    req.session.user_id = null;
+    res.redirect('/login');
+})
+*/
 
 
 app.get('/signup', (req, res) =>
@@ -54,37 +76,87 @@ app.get('/signup', (req, res) =>
     res.sendFile(__dirname + '/public/html/signup.html');
 })
 
-app.post('/signup', (req, res) =>
+app.post('/signup', async (req, res) =>
 {
     const {firstname,lastname,email,password,confirm_password,month,day,year,gender} = req.body;
     console.log(req.body);
-    console.log(email);
-    var birthDate = day + "/" + month + "/" + year; // gün/ay/yıl format
-    const newUser = new User(
+    var birthDate = `${day}/${month}/${year}`; // gün/ay/yıl format
+    if(password == confirm_password)
+    {
+        const newUser = new User(
+            {
+            firstName: firstname,
+            lastName: lastname,
+            email: email,
+            password: password,
+            birthDate: birthDate,
+            gender: gender,
+            isCustomer: true
+            });
+    
+        await newUser.save()
+        .then(() => 
         {
-        firstName: firstname,
-        lastName: lastname,
-        email: email,
-        password: password,
-        confirmPassword: confirm_password,
-        birthDate: birthDate,
-        gender: gender,
-        isCustomer: true
-        });
+        console.log("it is saved!");
+        })
+        .catch((e) =>
+        {
+        console.log("ERROR OCCURED!");
+        console.log(e);
+        })
 
-    newUser.save()
-    .then(() => 
+        req.session.user_id = newUser._id;
+        res.redirect('/');
+    }
+    else
     {
-    console.log("it is saved!");
-    })
-    .catch((e) =>
+        console.log("register failed");
+    }
+})
+
+app.get('/login', (req, res) => 
+{
+    res.sendFile(__dirname + '/public/html/login.html');
+})
+
+
+app.post('/login', async (req, res) =>
+{
+    const {email, password} = req.body;
+
+    const foundUser = await User.findAndValidate(email, password);
+
+    if(foundUser)
     {
-    console.log("ERROR OCCURED!");
-    console.log(e);
-    })
+        req.session.user_id = foundUser._id;
+        res.redirect('/');
+    }
+    else
+    {
+        res.redirect('/login');
+    }
+})
 
 
-    res.sendFile(__dirname + '/public/html/index.html');
+
+app.get('/:facilitytype', (req, res) => {
+    const { facilitytype } = req.params;
+    /*console.log(data);
+    if(data){
+        res.render('facilitypicker', { ...data });
+    } else {
+        res.render('notfound', {facilitytype});
+    }*/
+})
+
+
+app.get('/:facilitytype/:facility', (req, res) => {
+    const { facilitytype } = req.params;
+    /*if(data){
+        res.render('facility', { ...facdata });
+    } else {
+        res.render('notfound', { facility });
+    }*/
 })
 
 
