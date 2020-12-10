@@ -29,13 +29,8 @@ userSchema.statics.findAndValidate = async function (email, password)
 // hash the password before save()
 userSchema.pre('save', async function (next)
 {
-    if(!this.isModified('password'))
-    {
-        return next();
-    }
-
-    this.password = bcrypt.hash(this.password, 12);
-    next(); 
+    this.password = await bcrypt.hash(this.password, 12);
+    next();
 })
 
 module.exports = mongoose.model('User', userSchema);

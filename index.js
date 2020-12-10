@@ -46,9 +46,6 @@ const requireLogin = (req, res, next) =>
     }
 }
 
-
-
-
 app.get('/', (req, res) =>
 {  
     if(req.session.user_id)
@@ -69,7 +66,6 @@ app.post('/logout', (req, res) =>
     res.redirect('/login');
 })
 */
-
 
 app.get('/signup', (req, res) =>
 {
@@ -119,7 +115,6 @@ app.get('/login', (req, res) =>
     res.sendFile(__dirname + '/public/html/login.html');
 })
 
-
 app.post('/login', async (req, res) =>
 {
     const {email, password} = req.body;
@@ -138,7 +133,6 @@ app.post('/login', async (req, res) =>
 })
 
 
-
 app.get('/:facilitytype', (req, res) => {
     const { facilitytype } = req.params;
     /*console.log(data);
@@ -149,7 +143,6 @@ app.get('/:facilitytype', (req, res) => {
     }*/
 })
 
-
 app.get('/:facilitytype/:facility', (req, res) => {
     const { facilitytype } = req.params;
     /*if(data){
@@ -158,7 +151,6 @@ app.get('/:facilitytype/:facility', (req, res) => {
         res.render('notfound', { facility });
     }*/
 })
-
 
 app.listen(3000, () => 
 {

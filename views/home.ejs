@@ -178,7 +178,7 @@
         </script>
 
         <script type="text/javascript">
-            if(isloggedIn){
+            if(<%= isloggedIn %>){
                 var profileDropdownLogin = document.querySelector(".dd-login");
                 var profileDropdownSignup = document.querySelector(".dd-signup");
                 profileDropdownLogin.textContent = "Profile";
