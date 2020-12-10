@@ -1,6 +1,12 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+    }
+
 body{
-    background: #B2EBF2; 
-    margin-top: 70px;
+    background: #E3E3E3;
+    margin-top: 100px;
     height:100%;
     
 }
@@ -10,11 +16,11 @@ html,body{
 }
 
 .jumbotron{
-    background: #DD2C00;   
+    background: #D95E18; 
 }
 
 .navbar{
-    background-color: #00BCD4;
+    background-color: #bd320b;
 }
 
 .navbar-text{
@@ -48,12 +54,7 @@ html,body{
 }
 
 .hr-under-placename{
-    border: 12px solid;
-    border-radius: 75%;
+    border: 5px solid;
+    border-radius: 50%;
 }
 
-.xdsoft_datetimepicker .xdsoft_datepicker {
-	width: 224px;
-	float: left;
-	margin-left: 8px;
-}

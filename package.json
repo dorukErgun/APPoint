@@ -19,6 +19,7 @@
   "homepage": "https://github.com/dorukErgun/APPoint#readme",
   "dependencies": {
     "ejs": "^3.1.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jquery.scrollto": "^2.1.2"
   }
 }
