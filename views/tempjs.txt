@@ -1,0 +1,20 @@
+        <script type="text/javascript">
+            if(<%= isloggedIn %>){
+                console.log("here'!");
+                var profileDropdownLogin = document.querySelector(".dd-login");
+                var profileDropdownSignup = document.querySelector(".dd-signup");
+                var LoginForm = document.querySelector('.dd-login-form');
+                var SignupForm = document.querySelector('.dd-signup-form');
+                profileDropdownLogin.textContent = "Profile";
+                profileDropdownSignup.textContent="Logout";
+                profileDropdownLogin.href = "profile.html";
+                profileDropdownSignup.href = "/logout";
+                SignupForm.action = "/logout"
+                console.log(SignupForm.action);
+            }
+            else{
+                profileDropdownLogin.textContent = "Login";
+                profileDropdownSignup.textContent= "Sign-Up";
+            }
+            // profileDropdownSignup.attr('action', "/logout")
+        </script>
