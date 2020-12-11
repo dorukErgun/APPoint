@@ -11,8 +11,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../styles/index.css">
+        <link rel="stylesheet" type="text/css" href="../styles/home.css">
         <link rel="text/script" href="../../index.js">
+        <script src="https://kit.fontawesome.com/540ab30225.js" crossorigin="anonymous"></script>
 
         <title>APPoint</title>
 
@@ -36,14 +37,16 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <% if( isloggedIn == false ){ %>
-                                <a class="dropdown-item" href="login.html"> Login </a>
-                                <a class="dropdown-item" href="signup.html"> Signup </a>
+                                <a class="dropdown-item" href="login.html"> <i class="fas fa-sign-in-alt" style="margin-right: 0.5em"></i> Login </a>
+                                <a class="dropdown-item" href="signup.html"> <i class="fas fa-user-plus" style="margin-right: 0.2em"></i> Signup </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"> <i class="fas fa-user-tie" style="margin-right: 0.4em"></i> Corporate Sign-In</a>
                             <% }else{ %>
-                                <a class="dropdown-item" href="profile.html"> Profile </a>
-                                <form action="/logout" href="login.html" method="POST" class="form" role="form"> <button type="submit"> Logout </button></form>
+                                <a class="dropdown-item" href="profile.html"> <i class="fas fa-user" style="margin-right: 0.5em"></i> Profile </a>
+                                <div class="dropdown-divider"></div>
+                                <a href=""><form action="/logout" href="login.html" method="POST" class="form dropdown-item" role="form"> <button class="logout-button" type="submit"> <i class="fas fa-sign-out-alt" style="margin-right: 0.4em"></i> Logout </button></form> </a>
                             <% } %>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Corporate Sign-In</a>
+                            
                             </div>
                         </li>
                     </ul>

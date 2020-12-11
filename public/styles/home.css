@@ -1,0 +1,99 @@
+*{
+padding: 0px;
+margin: 0px;
+font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #E3E3E3;
+     
+}
+
+.main_header{
+    font-weight: 701;
+    color: white;
+}
+
+.logout-button{
+    border:none;
+    background:transparent;
+    
+    display:inline-block;
+    
+    color:black;
+}
+
+.jumbotron{
+	height: 100vh;
+	background-image: url('../images/background.jpg');
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-size: cover;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+
+#down{
+    color:white;
+ position: absolute;
+ top:85vh;
+ padding: 20px;
+ size: 40px;
+ font-size: 2.5em;
+}
+#down:hover
+{
+ cursor: pointer;
+ background-color: #eee;
+ opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+}
+
+.navbar{
+    background-color: #bd320b;
+}
+
+.card{
+    background-color: #D95E18; 
+    border-radius: 5%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.card:hover{
+    background-color: #bd320b;
+    padding: 0px;
+}
+
+.card-img-top{
+    border-radius: 5%;
+}
+
+.card-title{
+    color: white;
+    margin-top: 10px;
+}
+
+.navbar-text{
+    color: white;
+}
+
+
+.copyright{
+    color: #FF5722;
+    padding: 25px;
+    background-color: #B2A6A5;
+}
+
+.footer_text{
+    color:white;
+}
+
+.footer_text:hover{
+    color:#2A2626
+}
+
+
