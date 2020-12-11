@@ -67,11 +67,7 @@ app.get('/', (req, res) =>
 app.post('/logout', (req, res) =>
 {
     req.session.user_id = null;
-    console.log("çıkış");
-    const isloggedIn = false;
-    res.render('home', {isloggedIn});
-    //Burası çöküyor, bu haliyle çalışıyor gibi ama yukardaki urlde /logout kalıyor??
-    //res.redirect('home');
+    res.redirect('/');
 })
 
 
