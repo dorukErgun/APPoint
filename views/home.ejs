@@ -35,8 +35,13 @@
                                 </svg>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item dd-login" href="login.html"> <form action="" method="POST">Login</form> </a>
-                            <a class="dropdown-item dd-signup" href="signup.html"><form action="" method="POST">Sign-Up</form></a>
+                            <% if( isloggedIn == false ){ %>
+                                <a class="dropdown-item" href="login.html"> Login </a>
+                                <a class="dropdown-item" href="signup.html"> Signup </a>
+                            <% }else{ %>
+                                <a class="dropdown-item" href="profile.html"> Profile </a>
+                                <form action="/logout" href="login.html" method="POST" class="form" role="form"> <button type="submit"> Logout </button></form>
+                            <% } %>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Corporate Sign-In</a>
                             </div>
@@ -175,24 +180,6 @@
                 }, 1000);
                 });
             });
-        </script>
-
-        <script type="text/javascript">
-            if(<%= isloggedIn %>){
-                var profileDropdownLogin = document.querySelector(".dd-login");
-                var profileDropdownSignup = document.querySelector(".dd-signup");
-                profileDropdownLogin.textContent = "Profile";
-                profileDropdownSignup.textContent="Logout";
-                profileDropdownLogin.href = "profile.html";
-                profileDropdownSignup.addEventListener("click", function(){
-                    profileDropdownSignup.action = "/logout"
-                });
-            }
-            else{
-                profileDropdownLogin.textContent = "Login";
-                profileDropdownSignup.textContent= "Sign-Up";
-            }
-            // profileDropdownSignup.attr('action', "/logout")
         </script>
 
     </body>
