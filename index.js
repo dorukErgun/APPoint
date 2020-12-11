@@ -67,6 +67,7 @@ app.get('/', (req, res) =>
 app.post('/logout', (req, res) =>
 {
     req.session.user_id = null;
+    
     res.redirect('/');
 })
 
