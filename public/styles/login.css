@@ -1,0 +1,51 @@
+*{
+padding: 0px;
+margin: 0px;
+font-family: 'Poppins', sans-serif;
+}
+
+html,body{
+    height:100%;
+}
+
+body{
+    background: #E3E3E3;
+    margin-top: 100px;
+}
+
+.main_header{
+    font-weight: 700;
+    color: white;
+}
+
+@media screen and (max-width: 600px) {
+}
+
+.navbar{
+    background-color: #bd320b;
+}
+
+
+.navbar-text{
+    color: white;
+}
+
+.copyright{
+    margin-top: 100px;
+    color: #FF5722;
+    padding: 25px;
+    background-color: #B2A6A5;
+}
+
+.footer_text{
+    color:white;
+}
+
+.footer_text:hover{
+    color:#2A2626;
+}
+
+.form-control{
+    margin-bottom: 10px;
+}
+
