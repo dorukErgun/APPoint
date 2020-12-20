@@ -13,6 +13,7 @@
     </head>
     <body>
 
+
         <nav id="navbar" class="navbar navbar-expand fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="home.html"><b class="navbar-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +56,7 @@
                             </div>
                         </div>
                         
-                        <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  /><input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /><input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />                    <label>Birth Date</label>                    <div class="row">
+                        <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  /><input type="password" id="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /><input type="password" id="confirm_password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />                    <label>Birth Date</label>                    <div class="row">
                             <div class="col-xs-4 col-md-4">
                                 <select name="month" class = "form-control input-lg">
                                     <option value="01">Jan</option>
@@ -237,6 +238,19 @@
     </footer>
     
 
+    <script>
+        var password = document.getElementById("password") , confirm_password = document.getElementById("confirm_password");
+        function validatePassword(){
+            if(password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+            confirm_password.setCustomValidity('');
+            }
+        }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+    </script>
 
 
         <!-- Optional JavaScript -->
