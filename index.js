@@ -46,6 +46,13 @@ const requireLogin = (req, res, next) =>
     }
 }
 
+app.get('/secret', requireLogin, (req, res) =>
+{
+    res.redirect('/');
+    console.log('secret running');
+    return 1;
+})
+
 
 
 
@@ -62,6 +69,8 @@ app.get('/', (req, res) =>
         res.render('home', {isloggedIn});
     }
 })
+
+
 
 // when logout button arrives, it will run
 app.post('/logout', (req, res) =>
@@ -166,8 +175,11 @@ app.get('/:facilitytype/:facility', (req, res) => {
     }*/
 })
 
-
+module.exports = app;
+/*
 app.listen(3000, () => 
 {
     console.log("Server is running..");
 })
+*/
+
