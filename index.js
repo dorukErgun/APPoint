@@ -78,6 +78,7 @@ app.get('/profile', requireLogin, (req, res) =>
 })
 
 
+
 app.get('/signup', (req, res) =>
 {
     res.sendFile(__dirname + '/public/html/signup.html');
@@ -144,21 +145,17 @@ app.post('/login', async (req, res) =>
     }
 })
 
-
-
-app.get('/:facilitytype', (req, res) => {
-    const { facilitytype } = req.params;
-    /*console.log(data);
-    if(data){
-        res.render('facilitypicker', { ...data });
-    } else {
-        res.render('notfound', {facilitytype});
-    }*/
+app.get('/:facilitytype', (req, res) =>
+{
+    const facilityType = req.params.facilitytype;
+    res.send(facilityType);
+    
 })
 
-
-app.get('/:facilitytype/:facility', (req, res) => {
-    const { facilitytype } = req.params;
+app.get('/:facilitytype/:facilityname', (req, res) => {
+    const facilityType = req.params.facilitytype;
+    const facilityName = req.params.facilityname;
+    res.send(`${facilityName} ${facilityType}`);
     /*if(data){
         res.render('facility', { ...facdata });
     } else {
