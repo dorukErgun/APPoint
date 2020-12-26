@@ -63,6 +63,12 @@ app.get('/', (req, res) =>
     }
 })
 
+//TRYING FACILITY
+app.get('/trial', (req, res) =>
+{ 
+    res.render('facility');
+})
+
 // when logout button arrives, it will run
 app.post('/logout', (req, res) =>
 {
