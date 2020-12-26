@@ -6,6 +6,7 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const User = require('./models/user');
+const Facility = require('./models/facility');
 
 mongoose.connect('mongodb+srv://admin:admin@cluster0.mwbbr.mongodb.net/user?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => 
@@ -151,10 +152,23 @@ app.post('/login', async (req, res) =>
     }
 })
 
-app.get('/:facilitytype', (req, res) =>
+app.get('/:facilitytype', async (req, res) =>
 {
     const facilityType = req.params.facilitytype;
-    res.send(facilityType);
+    const facilities = await Facility.find({ category: facilityType});
+    res.render('facilitypicker', {facilities, facilityType});
+    //res.render('temp', {facilities});
+
+
+
+
+    //res.render('facilitypicker');
+
+
+
+
+
+
     
 })
 
