@@ -46,13 +46,6 @@ const requireLogin = (req, res, next) =>
     }
 }
 
-app.get('/secret', requireLogin, (req, res) =>
-{
-    res.redirect('/');
-    console.log('secret running');
-    return 1;
-})
-
 
 
 
@@ -70,8 +63,6 @@ app.get('/', (req, res) =>
     }
 })
 
-
-
 // when logout button arrives, it will run
 app.post('/logout', (req, res) =>
 {
@@ -85,6 +76,7 @@ app.get('/profile', requireLogin, (req, res) =>
 {
     res.send('giriş yaptın');
 })
+
 
 
 app.get('/signup', (req, res) =>
@@ -153,21 +145,17 @@ app.post('/login', async (req, res) =>
     }
 })
 
-
-
-app.get('/:facilitytype', (req, res) => {
-    const { facilitytype } = req.params;
-    /*console.log(data);
-    if(data){
-        res.render('facilitypicker', { ...data });
-    } else {
-        res.render('notfound', {facilitytype});
-    }*/
+app.get('/:facilitytype', (req, res) =>
+{
+    const facilityType = req.params.facilitytype;
+    res.send(facilityType);
+    
 })
 
-
-app.get('/:facilitytype/:facility', (req, res) => {
-    const { facilitytype } = req.params;
+app.get('/:facilitytype/:facilityname', (req, res) => {
+    const facilityType = req.params.facilitytype;
+    const facilityName = req.params.facilityname;
+    res.send(`${facilityName} ${facilityType}`);
     /*if(data){
         res.render('facility', { ...facdata });
     } else {
@@ -175,11 +163,8 @@ app.get('/:facilitytype/:facility', (req, res) => {
     }*/
 })
 
-module.exports = app;
-/*
+
 app.listen(3000, () => 
 {
     console.log("Server is running..");
 })
-*/
-
