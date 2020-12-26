@@ -176,11 +176,11 @@ app.get('/:facilitytype/:facilityname', (req, res) => {
     const facilityType = req.params.facilitytype;
     const facilityName = req.params.facilityname;
     res.send(`${facilityName} ${facilityType}`);
-    /*if(data){
+    if(data){
         res.render('facility', { ...facdata });
     } else {
         res.render('notfound', { facility });
-    }*/
+    }
 })
 
 
