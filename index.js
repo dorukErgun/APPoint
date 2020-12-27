@@ -71,6 +71,12 @@ app.get('/trial', (req, res) =>
     res.render('facility');
 })
 
+//TRYING PROFILE
+app.get('/profile', (req, res) =>
+{ 
+    res.render('profile');
+})
+
 // when logout button arrives, it will run
 app.post('/logout', (req, res) =>
 {
