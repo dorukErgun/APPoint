@@ -19,7 +19,7 @@ mongoose.set('useCreateIndex', true); // for deprecation warning
 
 const newFacility = new Facility(
     {
-    name : "Vapiano2",
+    name : "vapiano",
     image : "vapiano2.jpeg",
     about : "İtalyan Lezzetleri, Pizza, Makarna, Salata ve Tatlılar",
     number : "555 123 123",

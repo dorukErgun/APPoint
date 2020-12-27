@@ -54,7 +54,8 @@
                 <% for(let facility of facilities) { %>
                 <div class="col-lg-4 mb-3">
                   <div class="card">
-                      <img class="card-img-top" src="/images/facilityphoto.jpg" alt="Card image cap">
+                      <% imgsrc = "/images/facilities/" + facility.image %>
+                      <img class="card-img-top" src= "<%= imgsrc %>" alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title"><%= facility.name %></h5>
                         <p class="card-text"><%= facility.about %></p>

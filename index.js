@@ -163,14 +163,8 @@ app.get('/:facilitytype', async (req, res) =>
 {
     const facilityType = req.params.facilitytype;
     const facilities = await Facility.find({ category: facilityType});
+
     res.render('facilitypicker', {facilities, facilityType});
-    //res.render('temp', {facilities});
-
-
-
-
-    //res.render('facilitypicker');
-
 
 
 
@@ -179,15 +173,12 @@ app.get('/:facilitytype', async (req, res) =>
     
 })
 
-app.get('/:facilitytype/:facilityname', (req, res) => {
+app.get('/:facilitytype/:facilityname', async (req, res) => {
     const facilityType = req.params.facilitytype;
     const facilityName = req.params.facilityname;
-    res.send(`${facilityName} ${facilityType}`);
-    if(data){
-        res.render('facility', { ...facdata });
-    } else {
-        res.render('notfound', { facility });
-    }
+    const facility = await Facility.findOne({ category: facilityType, name : facilityName});
+    console.log(facility);
+    res.render('facility', {facility, facilityType});
 })
 
 
