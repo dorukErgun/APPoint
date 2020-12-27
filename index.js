@@ -71,8 +71,8 @@ app.get('/trial', (req, res) =>
     res.render('facility');
 })
 
-//TRYING PROFILE
-app.get('/profile', (req, res) =>
+
+app.get('/profile', requireLogin, (req, res) =>
 { 
     res.render('profile');
 })
@@ -86,10 +86,6 @@ app.post('/logout', (req, res) =>
 })
 
 
-app.get('/profile', requireLogin, (req, res) =>
-{
-    res.send('giriş yaptın');
-})
 
 
 
@@ -164,16 +160,38 @@ app.get('/:facilitytype', async (req, res) =>
     const facilityType = req.params.facilitytype;
     const facilities = await Facility.find({ category: facilityType});
 
-    res.render('facilitypicker', {facilities, facilityType});
+    if(req.session.user_id)
+    {
+        const isloggedIn = true;
+        res.render('facilitypicker', {facilities, facilityType, isloggedIn});
+    }
+    else
+    {
+        const isloggedIn = false;
+        res.render('facilitypicker', {facilities, facilityType, isloggedIn});
+    }
+
 
 })
 
 app.get('/:facilitytype/:facilityname', async (req, res) => {
+    console.log(" facilitytype name request");
     const facilityType = req.params.facilitytype;
     const facilityName = req.params.facilityname;
     const facility = await Facility.findOne({ category: facilityType, name : facilityName});
     console.log(facility);
-    res.render('facility', {facility, facilityType});
+
+    if(req.session.user_id)
+    {
+        const isloggedIn = true;
+        res.render('facility', {facility, facilityType, isloggedIn});
+    }
+    else
+    {
+        const isloggedIn = false;
+        res.render('facility', {facility, facilityType, isloggedIn});
+    }
+    
 })
 
 
