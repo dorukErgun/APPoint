@@ -32,14 +32,14 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <% if( isloggedIn == false ){ %>
-                                    <a class="dropdown-item" href="login.html"> <i class="fas fa-sign-in-alt" style="margin-right: 0.5em"></i> Login </a>
-                                    <a class="dropdown-item" href="signup.html"> <i class="fas fa-user-plus" style="margin-right: 0.2em"></i> Signup </a>
+                                    <a class="dropdown-item" href="/login"> <i class="fas fa-sign-in-alt" style="margin-right: 0.5em"></i> Login </a>
+                                    <a class="dropdown-item" href="/signup"> <i class="fas fa-user-plus" style="margin-right: 0.2em"></i> Signup </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#"> <i class="fas fa-user-tie" style="margin-right: 0.4em"></i> Corporate Sign-In</a>
                                 <% }else{ %>
                                     <a class="dropdown-item" href="/profile"> <i class="fas fa-user" style="margin-right: 0.5em"></i> Profile </a>
                                     <div class="dropdown-divider"></div>
-                                    <a href=""><form action="/logout" href="login.html" method="POST" class="form dropdown-item" role="form"> <button class="logout-button" type="submit"> <i class="fas fa-sign-out-alt" style="margin-right: 0.4em"></i> Logout </button></form> </a>
+                                    <a href=""><form action="/logout" href="/login" method="POST" class="form dropdown-item" role="form"> <button class="logout-button" type="submit"> <i class="fas fa-sign-out-alt" style="margin-right: 0.4em"></i> Logout </button></form> </a>
                                 <% } %>
                             </div>
                         </li>
@@ -51,12 +51,13 @@
 
     
         <div class="container" style="margin-top: 100px">
-            <img class="facilityphoto img-fluid" src="../images/facilityphotox.jpg" alt="">
+            <% imgsrc = "/images/facilities/" + facility.image %>
+            <img class="facilityphoto img-fluid" src= "<%= imgsrc %>" alt="">
         </div>
 
 
         <div class="container" style="margin-top: 10px">
-            <h1 style="text-align: center;"><%= facility.name.toUpperCase() %></h1>
+            <h1 style="text-align: center"> <%= facility.name.toUpperCase() %></h1>
             <hr class="hr-under-placename">
         </div>
 
