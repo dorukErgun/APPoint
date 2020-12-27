@@ -166,11 +166,6 @@ app.get('/:facilitytype', async (req, res) =>
 
     res.render('facilitypicker', {facilities, facilityType});
 
-
-
-
-
-    
 })
 
 app.get('/:facilitytype/:facilityname', async (req, res) => {
