@@ -26,6 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '/public/html')));
 app.use(express.static(path.join(__dirname, '/public/css')));
+app.use(express.static(path.join(__dirname, '/public/scripts')));
 app.use(express.json()); // json parser
 app.use(express.urlencoded({extended: true})); // bu kısım formdan gelen datanın json formatına gelmesi için
 
