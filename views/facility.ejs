@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
         <!-- Facility CSS -->
-        <link href="/styles/jquery.datetimepicker.min.css" rel="stylesheet">
+        <link href="/styles/jquery.datetimepicker.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/styles/facilitypage.css">
 
         <!-- <link rel="stylesheet" type="text/css" href="/styles/facilitypage.css"> -->
@@ -93,29 +93,21 @@
                 <div class="container"></div>
                 <form action="http://localhost:3000/facility" method="post" accept-charset="utf-8" class="form" role="form">
                 <input id="datetime" name="datevalue">
+                <p id="try">INPUT</p>
                 
                 <script>
-
-                var specificDates = ['24/12/2014','17/12/2014'];
-                var hoursToTakeAway = [[14,15],[17]];
-
-                    var datetimepicker = $("#datetime").datetimepicker({
-                        format:'d.m.Y H:i',
-                        inline:true,
-                        theme:"dark",
-                        onGenerate:function(ct,$i){
-                            var ind = specificDates.indexOf(ct.dateFormat('d/m/Y'));
-                            $('.xdsoft_time_variant .xdsoft_time').show();
-                            if(ind !== -1) {
-                            $('.xdsoft_time_variant .xdsoft_time').each(function(index){
-                            if(hoursToTakeAway[ind].indexOf(parseInt($(this).text())) !== -1){
-                            $(this).hide();        
-                        }
-                  });
-              }
-            }
+                var p = document.getElementById("try");
+                var selected;
+                var datetimepicker = $("#datetime").datetimepicker({
+                    format:'d.m.Y',
+                    inline:true,
+                    theme:"dark",});
+                    $("#datetime").on("change",function(){
+                        selected = $(this).val();
+                        console.log(selected);
+                        p.textContent = selected;
                     });
-
+                    
                 </script>
                 
                 <button type="submit" class="btn btn-primary btn-lg float-right">Submit</button>
