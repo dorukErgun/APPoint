@@ -1,19 +1,17 @@
 <!doctype html>
 <html lang="en">
     <head>
+
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <!-- Google Fonts  -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../styles/home.css">
-        <link rel="text/script" href="../../index.js">
-        <script src="https://kit.fontawesome.com/540ab30225.js" crossorigin="anonymous"></script>
+        <!-- Home CSS -->
+        <link rel="stylesheet" type="text/css" href="/styles/home.css">
 
         <title>APPoint</title>
 
@@ -22,11 +20,11 @@
 
         <nav id="navbar" class="navbar navbar-expand fixed-top">
             <div class="container">
-                <a class="navbar-brand"><b class="navbar-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <a class="navbar-brand" href="/"><b class="navbar-text"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
                     <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
                     <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                  </svg> <span class="page-start"> APPoint</span></b></a>
+                    </svg> <span class="page-start"> APPoint</span></b></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
@@ -46,7 +44,6 @@
                                 <div class="dropdown-divider"></div>
                                 <a href=""><form action="/logout" href="/login" method="POST" class="form dropdown-item" role="form"> <button class="logout-button" type="submit"> <i class="fas fa-sign-out-alt" style="margin-right: 0.4em"></i> Logout </button></form> </a>
                             <% } %>
-                            
                             </div>
                         </li>
                     </ul>
@@ -57,100 +54,90 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container calendar-img">
-                    <h1 class="display-2"><b><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-check main_header" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
-                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
-                    <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                    </svg>  <span class="main_header">APPoint</span></b></h1>
-                    <p class="lead main_header">Making appointments has never been easier!</p>
-                    <span id="down">&#8595;</span>
+                <h1 class="display-2"><b><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-check main_header" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                </svg><span class="main_header">APPoint</span></b></h1>
+                <p class="lead main_header">Making appointments has never been easier!</p>
+                <span id="down">&#8595;</span>
             </div>
         </div>
-
 
         <div class="facility-types">
             <div class="container">
-
-            <p class="display-4">Where are you planning to make an appointment?</p>
-
-            <div class="row">
-                <a href="/healthclinics">
-                <div class="col-lg-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <img class="card-img-top" src="../images/health_clinic_icon.png" alt="Card image cap">
-                            <a href="/healthclinics"><h5 class="card-title">Health Clinics</h5></a>
-                            
+                <p class="display-4">Where are you planning to make an appointment?</p>
+                <div class="row">
+                    <a href="/healthclinics">
+                        <div class="col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top" src="../images/health_clinic_icon.png" alt="Card image cap">
+                                    <a href="/healthclinics"><h5 class="card-title">Health Clinics</h5></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
+                    <a href="/restaurants">
+                        <div class="col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top" src="../images/restaurant.PNG" alt="Card image cap">
+                                    <a href="/restaurants"><h5 class="card-title">Restaurants</h5></a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                        
+                    <a href="/coiffeurs">
+                        <div class="col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top" src="../images/coiffeur_icon.png" alt="Card image cap">
+                                    <a href="/coiffeurs"><h5 class="card-title">Coiffeurs</h5></a>  
+                                </div>
+                            </div>
+                        </div>  
+                    </a>
                 </div>
-            </a>
+                
+                <div class="row">
+                    <a href="/barbershops">
+                        <div class="col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top" src="../images/barber_shop_icon.PNG" alt="Card image cap">
+                                    <a href="/barbershops"><h5 class="card-title">Barber Shops</h5></a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
 
-                <a href="/restaurants">
-                <div class="col-lg-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <img class="card-img-top" src="../images/restaurant.PNG" alt="Card image cap">
-                            <a href="/restaurants"><h5 class="card-title">Restaurants</h5></a>
-                            
+                    <a href="/personaltrainers">
+                        <div class="col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top" src="../images/personal_trainer_icon.png" alt="Card image cap">
+                                    <a href="/personaltrainers"><h5 class="card-title">Personal Trainers</h5></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </a> 
+                        
+                    <a href="/carwashers">
+                        <div class="col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top" src="../images/car_washer_icon.png" alt="Card image cap">
+                                    <a href="/carwashers"><h5 class="card-title">Car Washers</h5></a></a>
+                                </div>
+                            </div>
+                        </div> 
+                    </a>    
                 </div>
-            </a>
-                    
-            <a href="/coiffeurs">
-                <div class="col-lg-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <img class="card-img-top" src="../images/coiffeur_icon.png" alt="Card image cap">
-                            <a href="/coiffeurs"><h5 class="card-title">Coiffeurs</h5></a>
-                            
-                        </div>
-                    </div>
-                </div>  
-            </a>
-                
-                
             </div>
-            
-            <div class="row">
-                <a href="/barbershops">
-                <div class="col-lg-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <img class="card-img-top" src="../images/barber_shop_icon.PNG" alt="Card image cap">
-                            <a href="/barbershops"><h5 class="card-title">Barber Shops</h5></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-                <a href="/personaltrainers">
-                <div class="col-lg-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <img class="card-img-top" src="../images/personal_trainer_icon.png" alt="Card image cap">
-                            <a href="/personaltrainers"><h5 class="card-title">Personal Trainers</h5></a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </a> 
-                    
-                <a href="/carwashers">
-                <div class="col-lg-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <img class="card-img-top" src="../images/car_washer_icon.png" alt="Card image cap">
-                            <a href="/carwashers"><h5 class="card-title">Car Washers</h5></a></a>
-                        </div>
-                    </div>
-                </div> 
-                </a> 
-                
-                
-            </div>
-        </div>
         </div>
 
         <footer class="copyright">
@@ -167,23 +154,27 @@
                 </div>
             </div>
         </footer>
-        
 
-        <script type="text/javascript">
-            window.onbeforeunload = function () {
-              window.scrollTo(0, 0);
-            }
+    <script src="https://kit.fontawesome.com/540ab30225.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Landing Screen slidedown script. -->
+    <script type="text/javascript">
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
             
-                $(document).ready( function () {
-                $('#down').on('click',function () {
-                    $("html").scrollTop(0);
-                    console.log("Clicked!");
-                     $('html, body').animate({
-                    scrollTop: $(".facility-types").offset().top - 100
-                }, 1000);
-                });
+        $(document).ready( function () {
+            $('#down').on('click',function () {
+                $("html").scrollTop(0);
+                console.log("Clicked!");
+                    $('html, body').animate({
+                scrollTop: $(".facility-types").offset().top - 100
+            }, 1000);
             });
-        </script>
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
     </body>
 </html>

@@ -42,7 +42,7 @@ body{
     color: white;
 }
 
-.logout-button{
+.logout-button-side{
     border:none;
     background:transparent;
     
@@ -51,7 +51,16 @@ body{
     color:white;
 }
 
-.logout-button:hover{
+.logout-button{
+    border:none;
+    background:transparent;
+    
+    display:inline-block;
+    
+    color:black;
+}
+
+.logout-button-side:hover{
     color:#FF5722;
 }
     

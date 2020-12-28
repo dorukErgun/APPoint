@@ -27,6 +27,16 @@ html,body{
     color: white;
 }
 
+.logout-button{
+    border:none;
+    background:transparent;
+    
+    display:inline-block;
+    
+    color:black;
+}
+
+
 .photoholder{
     padding-top: 35px;
     width: 100%;
