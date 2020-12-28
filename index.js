@@ -195,6 +195,16 @@ app.get('/:facilitytype/:facilityname', async (req, res) => {
 })
 
 
+
+app.post('/:facilitytype/:facilityname', async (req, res) => 
+{
+    const test = req.body;
+    console.log(test);
+})
+
+
+
+
 app.listen(3000, () => 
 {
     console.log("Server is running..");

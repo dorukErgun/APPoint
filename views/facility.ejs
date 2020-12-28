@@ -91,7 +91,8 @@
                 <script src="/scripts/jquery.datetimepicker.full.js"></script>
                 
                 <div class="container"></div>
-                <form action="http://localhost:3000/facility" method="post" accept-charset="utf-8" class="form" role="form">
+                <% let postlink = '/' + facilityType + '/' + facility %>
+                <form action="<%= postlink %> " method="post" accept-charset="utf-8" class="form" role="form">
                 <input id="datetime" name="datevalue">
                 
                 <script>
