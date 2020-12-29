@@ -94,7 +94,3 @@ async function test()
 }
 
 test()
-
-
-//salt(newFacility);
-//saveDb(newFacility);
