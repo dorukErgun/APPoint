@@ -91,7 +91,7 @@
                 <script src="/scripts/jquery.datetimepicker.full.js"></script>
                 
                 <div class="container">
-                <form href="/" action="#" method="post" accept-charset="utf-8" class="form" role="form">
+                <form href="/" action="" method="post" accept-charset="utf-8" class="form" role="form">
                 <input id="datetime" name="datevalue">
                 <p id="try">INPUT</p>
 
@@ -138,7 +138,8 @@
 <script>
     var hourOptions = document.querySelectorAll("option");
     var disabledHours = ["10:00", "11:00", "13:00"];
-    var toDisable = ejs.render('<%= facility.appointments %>', {facilty: facility});
+    <% var array = facility.appointments %>
+    var toDisable = <%= array %>;
     console.log(toDisable);
 
 
