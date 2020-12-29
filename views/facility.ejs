@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
         <!-- Facility CSS -->
-        <link href="/styles/jquery.datetimepicker.min.css" rel="stylesheet">
+        <link href="/styles/jquery.datetimepicker.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/styles/facilitypage.css">
 
         <!-- <link rel="stylesheet" type="text/css" href="/styles/facilitypage.css"> -->
@@ -90,41 +90,82 @@
                 <script src="/scripts/jquery.js"></script>
                 <script src="/scripts/jquery.datetimepicker.full.js"></script>
                 
-                <div class="container"></div>
-                <% let postlink = '/' + facilityType + '/' + facility %>
-                <form action="<%= postlink %> " method="post" accept-charset="utf-8" class="form" role="form">
+                <div class="container">
+                <form href="/" action="#" method="post" accept-charset="utf-8" class="form" role="form">
                 <input id="datetime" name="datevalue">
-                
-                <script>
+                <p id="try">INPUT</p>
 
-                var specificDates = ['24/12/2014','17/12/2014'];
-                var hoursToTakeAway = [[14,15],[17]];
+                <select name="year" class = "form-control input-lg" placeholder="Choose hour">
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                    <option value="24:00">24:00</option>
+                </select> 
 
-                    var datetimepicker = $("#datetime").datetimepicker({
-                        format:'d.m.Y H:i',
-                        inline:true,
-                        theme:"dark",
-                        onGenerate:function(ct,$i){
-                            var ind = specificDates.indexOf(ct.dateFormat('d/m/Y'));
-                            $('.xdsoft_time_variant .xdsoft_time').show();
-                            if(ind !== -1) {
-                            $('.xdsoft_time_variant .xdsoft_time').each(function(index){
-                            if(hoursToTakeAway[ind].indexOf(parseInt($(this).text())) !== -1){
-                            $(this).hide();        
-                        }
-                  });
-              }
-            }
-                    });
-
-                </script>
-                
                 <button type="submit" class="btn btn-primary btn-lg float-right">Submit</button>
             </form>
             </div>
             </div>
         </div>
 
+        <p> dsasad <%= console.log(facility.appointments) %></p>
+
+            <script>
+                    var p = document.getElementById("try");
+                    var selected;
+                    var datetimepicker = $("#datetime").datetimepicker({
+                        minView: 2,
+                        format: 'd.m.yy',
+                        autoclose: true,
+                        timepicker: false,
+                        inline :false,
+                    });
+            </script>
+
+<script>
+    var hourOptions = document.querySelectorAll("option");
+    var disabledHours = ["10:00", "11:00", "13:00"];
+    var toDisable = ejs.render('<%= facility.appointments %>', {facilty: facility});
+    console.log(toDisable);
+
+
+    $("#datetime").on("change",function(){
+
+        for(var i=0; i<hourOptions.length; i++){
+            hourOptions[i].removeAttribute("disabled");
+            hourOptions[i].classList.remove("disabled-option");
+        }
+
+        choosen_date = $(this).val();
+        console.log(choosen_date);
+        p.textContent = choosen_date;
+
+        for(var i=0; i<toDisable.length; i++){
+            if(toDisable[i].slice(0,10) == choosen_date){
+                for(var j=0; j<hourOptions.length; j++){
+                    if(toDisable[i].slice(11,16) === hourOptions[j].textContent){
+                        hourOptions[j].setAttribute("disabled", "true");
+                        hourOptions[j].classList.add("disabled-option");
+                    }
+                }
+            }
+        }
+
+    });
+</script>
         <script src="https://kit.fontawesome.com/540ab30225.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
