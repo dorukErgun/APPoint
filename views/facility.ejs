@@ -121,7 +121,8 @@
             </div>
         </div>
 
-        <p> dsasad <%= console.log(facility.appointments) %></p>
+        <p> dsasad <% console.log("print :: ");
+                    console.log(facility.appointments)%></p>
 
             <script>
                     var p = document.getElementById("try");
@@ -140,6 +141,7 @@
     var disabledHours = ["10:00", "11:00", "13:00"];
     <% var array = facility.appointments %>
     var toDisable = <%= array %>;
+    console.log("disablz :");
     console.log(toDisable);
 
 
