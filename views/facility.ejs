@@ -138,12 +138,8 @@
 
 <script>
     var hourOptions = document.querySelectorAll("option");
-    var disabledHours = ["10:00", "11:00", "13:00"];
-    <% var array = facility.appointments %>
-    var toDisable = <%= array %>;
-    console.log("disablz :");
-    console.log(toDisable);
-
+    var disable = ["<%= appointment_string %>"];
+    console.log(disable);
 
     $("#datetime").on("change",function(){
 

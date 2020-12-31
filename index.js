@@ -181,15 +181,31 @@ app.get('/:facilitytype/:facilityname', async (req, res) => {
     const facility = await Facility.findOne({ category: facilityType, name : facilityName});
     console.log(facility);
 
+    var appointment_string = "";
+
+    for(var i=0; i<facility.appointments.length; i++){
+        if(i != 0){
+            appointment_string += "\"";
+        }
+        appointment_string += facility.appointments[i].date;
+        appointment_string += " ";
+        appointment_string += facility.appointments[i].hour;
+        if(i!=facility.appointments.length-1){
+            appointment_string += "\",";
+        }
+    }
+
+    console.log(appointment_string);
+
     if(req.session.user_id)
     {
         const isloggedIn = true;
-        res.render('facility', {facility, facilityType, isloggedIn});
+        res.render('facility', {facility, facilityType, isloggedIn, appointment_string});
     }
     else
     {
         const isloggedIn = false;
-        res.render('facility', {facility, facilityType, isloggedIn});
+        res.render('facility', {facility, facilityType, isloggedIn, appointment_string});
     }
     
 })
