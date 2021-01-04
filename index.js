@@ -1,5 +1,6 @@
 // express server setup
 const express = require('express');
+const router = express.Router()
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
@@ -7,6 +8,8 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 const User = require('./models/user');
 const Facility = require('./models/facility');
+const { hasUncaughtExceptionCaptureCallback } = require('process');
+_ = require('lodash');
 
 mongoose.connect('mongodb+srv://admin:admin@cluster0.mwbbr.mongodb.net/user?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => 
@@ -49,7 +52,7 @@ const requireLogin = (req, res, next) =>
 }
 
 
-
+// testi yazıldı, apiTest.js 
 
 app.get('/', (req, res) =>
 {  
@@ -65,13 +68,16 @@ app.get('/', (req, res) =>
     }
 })
 
+
 //TRYING FACILITY
+
+//test edilmedi, sayfa bulunamadi??
 app.get('/trial', (req, res) =>
 { 
     res.render('facility');
 })
 
-
+//test edildi, profileApiTest.js
 app.get('/profile', requireLogin, (req, res) =>
 { 
     res.render('profile');
@@ -84,9 +90,6 @@ app.post('/logout', (req, res) =>
     
     res.redirect('/');
 })
-
-
-
 
 
 app.get('/signup', (req, res) =>
@@ -219,9 +222,15 @@ app.post('/:facilitytype/:facilityname', async (req, res) =>
 })
 
 
+const startServer = ()=>{
+    app.listen(3000, () => 
+    {
+        console.log("Server is running..");
+    })
+    return true;
+}
+
+startServer();
 
 
-app.listen(3000, () => 
-{
-    console.log("Server is running..");
-})
+module.exports = app;

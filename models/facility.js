@@ -14,6 +14,11 @@ const facilitySchema = new mongoose.Schema(
        appointments : [Appointment]
    })
 
+///for testing
+getFacilitySchema = ()=> facilitySchema;
+module.exports= {getFacilitySchema};
+///
+
 module.exports = mongoose.model('Facility', facilitySchema);
 
 

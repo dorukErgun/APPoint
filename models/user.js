@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema(
         isCustomer: Boolean
     })
 
-
 userSchema.statics.findAndValidate = async function (email, password)
 {
     const foundUser = await this.findOne({email});
@@ -32,6 +31,11 @@ userSchema.pre('save', async function (next)
     this.password = await bcrypt.hash(this.password, 12);
     next();
 })
+
+///for testing
+getUserSchema = ()=> userSchema;
+module.exports= {getUserSchema};
+///
 
 module.exports = mongoose.model('User', userSchema);
 
