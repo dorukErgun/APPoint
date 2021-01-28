@@ -92,7 +92,7 @@
                 
                 <div class="container">
                 <form href="/" action="" method="post" accept-charset="utf-8" class="form" role="form">
-                <input id="datetime" name="datevalue">
+                <input type="text" id="datetime" name="datevalue" autocomplete="off">
                 <p id="try">INPUT</p>
 
                 <select name="hour" class = "form-control input-lg" placeholder="Choose hour">
@@ -121,50 +121,47 @@
             </div>
         </div>
 
-        <p> dsasad <% console.log("print :: ");
-                    console.log(facility.appointments)%></p>
+        <script>
+            var p = document.getElementById("try");
+            var selected;
+            var datetimepicker = $("#datetime").datetimepicker({
+                minView: 2,
+                format: 'd.m.Y',
+                timepicker: false,
+                inline:false,
+            });
+        </script>
 
-            <script>
-                    var p = document.getElementById("try");
-                    var selected;
-                    var datetimepicker = $("#datetime").datetimepicker({
-                        minView: 2,
-                        format: 'd.m.yy',
-                        autoclose: true,
-                        timepicker: false,
-                        inline :false,
-                    });
-            </script>
+        <script>
+            var hourOptions = document.querySelectorAll("option");
+            var toDisable = "<%= appointment_string %>";
+            console.log(toDisable);
 
-<script>
-    var hourOptions = document.querySelectorAll("option");
-    var disable = ["<%= appointment_string %>"];
-    console.log(disable);
+            $("#datetime").on("change",function(){
 
-    $("#datetime").on("change",function(){
+                for(var i=0; i<hourOptions.length; i++){
+                    hourOptions[i].removeAttribute("disabled");
+                    hourOptions[i].classList.remove("disabled-option");
+                }
 
-        for(var i=0; i<hourOptions.length; i++){
-            hourOptions[i].removeAttribute("disabled");
-            hourOptions[i].classList.remove("disabled-option");
-        }
+                choosen_date = $(this).val();
+                console.log(choosen_date);
+                p.textContent = choosen_date;
 
-        choosen_date = $(this).val();
-        console.log(choosen_date);
-        p.textContent = choosen_date;
-
-        for(var i=0; i<toDisable.length; i++){
-            if(toDisable[i].slice(0,10) == choosen_date){
-                for(var j=0; j<hourOptions.length; j++){
-                    if(toDisable[i].slice(11,16) === hourOptions[j].textContent){
-                        hourOptions[j].setAttribute("disabled", "true");
-                        hourOptions[j].classList.add("disabled-option");
+                for(var i=0; i<toDisable.length; i++){
+                    console.log(toDisable.slice(0,10))
+                    if(toDisable.slice(0,10) == choosen_date){
+                        for(var j=0; j<hourOptions.length; j++){
+                            if(toDisable.slice(11,16) === hourOptions[j].textContent){
+                                hourOptions[j].setAttribute("disabled", "true");
+                                hourOptions[j].classList.add("disabled-option");
+                            }
+                        }
                     }
                 }
-            }
-        }
 
-    });
-</script>
+            });
+        </script>
         <script src="https://kit.fontawesome.com/540ab30225.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

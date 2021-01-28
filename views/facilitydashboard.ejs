@@ -49,16 +49,16 @@
                 <!-- Sidebar -->
                 <nav id="sidebar">
                     <div class="sidebar-header">
-                        <h3> USER NAME </h3>
-                        <img src="/images/profile.jpg" class="image">
+                        <h3> FACILITY NAME </h3>
+                        <img src="/images/facility.png" class="image">
                     </div>
             
                     <ul class="list-unstyled components">
                         <li onclick="show(0)">
-                            <a href="#" >Profile</a>
+                            <a href="#" >Appointments</a>
                         </li>
                         <li onclick="show(1)">
-                            <a href="#">Appointments</a>
+                            <a href="#">Appointment Requests</a>
                         </li>
                         <li>
                             <a href=""><form action="/logout" href="/login" method="POST" class="form dropdown-item" role="form"> <button class="logout-button-side" type="submit"> <i class="fas fa-sign-out-alt" style="margin-right: 0.4em"></i> Logout </button></form></a>
@@ -70,11 +70,15 @@
 
         <div class="container">
             <section style="margin-top:50px" class="container sec tabs">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eaque vitae dolorum eius ex voluptates at reprehenderit qui, alias veritatis sequi facilis quia modi earum. A, architecto dolorem suscipit dignissimos illo modi! Facere commodi excepturi totam aliquid numquam adipisci itaque, dolore accusantium voluptatibus recusandae ut magnam nesciunt cumque quas deleniti!</p>
+                <% for(let appointment of appointments) { %>
+                <%= <p> appointment %> </p>
+                <% } %>
             </section>
             
             <section style="margin-top:50px" class="container sec tabs">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, neque?</p>
+                <% for(let appointment_request of appointment_requests) { %>
+                    <%= <p> appointment_request %> </p>
+                <% } %>
             </section>
             
         </div>

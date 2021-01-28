@@ -85,7 +85,10 @@ app.post('/logout', (req, res) =>
     res.redirect('/');
 })
 
-
+app.get('/test', (req, res) =>
+{
+    res.render('facilitydashboard');
+})
 
 
 
@@ -217,9 +220,6 @@ app.post('/:facilitytype/:facilityname', async (req, res) =>
     const test = req.body;
     console.log(test);
 })
-
-
-
 
 app.listen(3000, () => 
 {
