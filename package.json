@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "mocha facilityApiTest.js",
+    "integration": "mocha index.integrationtest.js",
+    "start": "node index.js",
+    "coverage": "istanbul cover _mocha index.test.js -x *.test.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
     "mongoose": "^5.11.7"
   },
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "jest": "^26.6.3",
     "supertest": "^6.0.1"
   },

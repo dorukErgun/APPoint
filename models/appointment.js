@@ -10,4 +10,10 @@ const dateSchema = new mongoose.Schema(
     })
 
 
+///for testing
+/*
+getDateSchema = ()=> dateSchema;
+module.exports = { getDateSchema };
+*/
+///
 module.exports = mongoose.Schema(dateSchema);

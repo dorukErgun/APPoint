@@ -14,10 +14,6 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0.mwbbr.mongodb.net/user?retr
 })
 mongoose.set('useCreateIndex', true); // for deprecation warning
 
-
-
-
-
 async function create() 
 {
     const newFacility = new Facility(
@@ -45,7 +41,6 @@ async function create()
         console.log(e);
         })
 
-    
 }
 
 
