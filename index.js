@@ -11,6 +11,9 @@ const Facility = require('./models/facility');
 const { hasUncaughtExceptionCaptureCallback } = require('process');
 _ = require('lodash');
 
+mongoose.set('useFindAndModify', false); // for deprecation warning
+
+
 mongoose.connect('mongodb+srv://admin:admin@cluster0.mwbbr.mongodb.net/user?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => 
 {
@@ -32,7 +35,7 @@ app.use(express.static(path.join(__dirname, '/public/html')));
 app.use(express.static(path.join(__dirname, '/public/css')));
 app.use(express.static(path.join(__dirname, '/public/scripts')));
 app.use(express.json()); // json parser
-app.use(express.urlencoded({extended: true})); // bu kısım formdan gelen datanın json formatına gelmesi için
+app.use(express.urlencoded({extended: true})); // for json format
 
 app.use(session({secret: "not a good secret",
                 resave: true,
@@ -67,6 +70,12 @@ app.get('/', (req, res) =>
         res.render('home', {isloggedIn});
     }
 })
+
+app.get('/test', (req, res) =>
+{  
+    res.render('test');
+})
+
 
 
 //TRYING FACILITY
@@ -110,6 +119,7 @@ app.post('/signup', async (req, res) =>
     var birthDate = `${day}/${month}/${year}`; // gün/ay/yıl format
     if(password == confirm_password)
     {
+
         const newUser = new User(
             {
             firstName: firstname,
@@ -117,8 +127,7 @@ app.post('/signup', async (req, res) =>
             email: email,
             password: password,
             birthDate: birthDate,
-            gender: gender,
-            isCustomer: true
+            gender: gender            
             });
     
         await newUser.save()
@@ -133,6 +142,17 @@ app.post('/signup', async (req, res) =>
         })
 
         req.session.user_id = newUser._id;
+        console.log(req.session.user_id);
+
+        const update = { userId : req.session.user_id};
+
+        // `doc` is the document _before_ `update` was applied
+        await User.findOneAndUpdate({email : email}, update);
+        
+
+
+
+        
         res.redirect('/');
     }
     else
@@ -223,8 +243,55 @@ app.get('/:facilitytype/:facilityname', async (req, res) => {
 
 app.post('/:facilitytype/:facilityname', async (req, res) => 
 {
-    const test = req.body;
-    console.log(test);
+    const {datevalue, hour} = req.body;
+    console.log(datevalue);
+    console.log(hour);
+
+
+    let user = await User.findOne({userId : req.session.user_id});
+
+    const userId = user._id;
+    console.log(user.email);
+
+    //create()
+    const update = 
+    {
+        date : datevalue,
+        hour : hour,
+        email : user.email,
+        isApproved : false
+    }
+
+    let facility =  await Facility.findOne({name : req.params.facilityname});
+    const id = facility._id;
+
+    await Facility.updateOne(
+        { "_id": id},
+        {
+            "$push":
+                {
+                    "appointments": update
+                }
+        }
+    ).then(data => {
+        console.log(data);
+    })
+
+    
+    await User.updateOne(
+        { "_id": userId},
+        {
+            "$push":
+                {
+                    "appointments": update
+                }
+        }
+    ).then(data => {
+        console.log(data);
+    })
+
+    res.redirect('/profile');
+
 })
 
 app.listen(3000, () => 
