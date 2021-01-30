@@ -1,5 +1,6 @@
  const mongoose = require('mongoose');
  const bcrypt = require('bcrypt');
+ const Appointment = require('./appointment');
 
  // user schema
 const userSchema = new mongoose.Schema(
@@ -8,10 +9,10 @@ const userSchema = new mongoose.Schema(
         lastName: String,
         email: String,
         password: String,
-        confirmPassword: String,
         birthDate: String,
         gender: String,
-        isCustomer: Boolean
+        userId: String,
+        appointments : [Appointment]
     })
 
 userSchema.statics.findAndValidate = async function (email, password)
