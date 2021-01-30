@@ -87,9 +87,12 @@ app.get('/trial', (req, res) =>
 })
 
 //test edildi, profileApiTest.js
-app.get('/profile', requireLogin, (req, res) =>
+app.get('/profile', requireLogin, async (req, res) =>
 { 
-    res.render('profile');
+    const user = await User.findOne({userId : req.session.user_id});
+
+    //const facility = await Facility.findOne({ category: facilityType, name : facilityName});
+    res.render('profile', {user});
 })
 
 // when logout button arrives, it will run
