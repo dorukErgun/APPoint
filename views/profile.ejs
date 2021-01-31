@@ -49,7 +49,7 @@
                 <!-- Sidebar -->
                 <nav id="sidebar">
                     <div class="sidebar-header">
-                        <h3> <%= user.firstName %> </h3>
+                        <h3> <%= user.firstName %>  <%= user.lastName %> </h3>
                         <img src="/images/profile.jpg" class="image">
                     </div>
             
@@ -70,11 +70,16 @@
 
         <div class="container">
             <section style="margin-top:50px" class="container sec tabs">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eaque vitae dolorum eius ex voluptates at reprehenderit qui, alias veritatis sequi facilis quia modi earum. A, architecto dolorem suscipit dignissimos illo modi! Facere commodi excepturi totam aliquid numquam adipisci itaque, dolore accusantium voluptatibus recusandae ut magnam nesciunt cumque quas deleniti!</p>
+                <p>Hello <%= user.firstName %> <%= user.lastName %>!</p>
             </section>
             
             <section style="margin-top:50px" class="container sec tabs">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, neque?</p>
+            <ul>
+                <% for(let appointment of user.appointments){ %>
+                    <li> You have an appointment at <%= appointment.date %> starting at hour <%= appointment.hour %>. </li>
+                <% } %>
+            </ul>
+            
             </section>
             
         </div>

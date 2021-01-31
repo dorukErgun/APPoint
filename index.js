@@ -83,7 +83,7 @@ app.get('/test', (req, res) =>
 //test edilmedi, sayfa bulunamadi??
 app.get('/trial', (req, res) =>
 { 
-    res.render('facility');
+    res.render('facilitydashboard');
 })
 
 //test edildi, profileApiTest.js
@@ -241,7 +241,6 @@ app.get('/:facilitytype/:facilityname', async (req, res) => {
     }
     
 })
-
 
 
 app.post('/:facilitytype/:facilityname', async (req, res) => 
