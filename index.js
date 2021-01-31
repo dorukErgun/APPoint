@@ -108,7 +108,31 @@ app.get('/test', (req, res) =>
     res.render('facilitydashboard');
 })
 
+app.get('/corporatelogin', (req, res) =>
+{
+    res.sendFile(__dirname + '/public/html/corporatelogin.html');
+})
 
+app.post('/corporatelogin', async (req, res) =>
+{
+    const {name, password} = req.body;
+    const foundUser = await Facility.findOne({name : name});
+    console.log(foundUser);
+    if(foundUser)
+    {
+        const isValid = await bcrypt.compare(password, foundUser.password);
+
+        if(isValid)
+        {
+            req.session.user_id = foundUser._id;
+            res.redirect('/profile');
+        }
+        else
+        {
+            res.redirect('/login');
+        }
+    }
+})
 
 app.get('/signup', (req, res) =>
 {
