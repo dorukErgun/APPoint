@@ -18,7 +18,7 @@ async function create()
 {
     const newFacility = new Facility(
         {
-        name : "vapianorand585858",
+        name : "vapianorand1903",
         password : "admin",
         image : "vapiano.jpeg",
         about : "İtalyan Lezzetleri, Pizza, Makarna, Salata ve Tatlılar",
@@ -40,6 +40,13 @@ async function create()
         console.log("ERROR OCCURED!");
         console.log(e);
         })
+
+        req.session.user_id = newUser._id;
+
+        const update = { userId : req.session.user_id};
+
+        // `doc` is the document _before_ `update` was applied
+        await Facility.findOneAndUpdate({name : "vapianorand1903"}, update);
 
 }
 
