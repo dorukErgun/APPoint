@@ -120,7 +120,7 @@ app.post('/corporatelogin', async (req, res) =>
         if(isValid)
         {
             req.session.user_id = foundUser._id;
-            res.redirect('/facilitydashboard');
+            res.redirect('/facilitydashboard/'+ foundUser.name);
         }
         else
         {
@@ -129,9 +129,11 @@ app.post('/corporatelogin', async (req, res) =>
     }
 })
 
-app.get('/facilitydashboard', requireLogin, (req, res) =>
+app.get('/facilitydashboard/:facilityname', requireLogin, async (req, res) =>
 {
-    res.render('facilitydashboard');
+    const facilityName = req.params.facilityname;
+    let facility =  await Facility.findOne({name : facilityName});
+    res.render('facilitydashboard', {facility});
 })
 
 app.get('/signup', (req, res) =>
