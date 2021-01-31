@@ -18,7 +18,7 @@ async function create()
 {
     const newFacility = new Facility(
         {
-        name : "vapianoRand",
+        name : "vapianorand585858",
         password : "admin",
         image : "vapiano.jpeg",
         about : "İtalyan Lezzetleri, Pizza, Makarna, Salata ve Tatlılar",
@@ -43,6 +43,7 @@ async function create()
 
 }
 
+create()
 
 async function saveDb(newFacility) 
 {
@@ -71,7 +72,7 @@ const update =
 
 async function test()
 {
-    let facility =  await Facility.findOne({name : 'vapianoRand'});
+    let facility =  await Facility.findOne({name : 'vapianorand585858'});
     const id = facility._id;
     console.log(id);
 
@@ -88,4 +89,4 @@ async function test()
     }) 
 }
 
-test()
+
