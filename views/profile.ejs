@@ -73,13 +73,34 @@
                 <p>Hello <%= user.firstName %> <%= user.lastName %>!</p>
             </section>
             
-            <section style="margin-top:50px" class="container sec tabs">
-            <ul>
-                <% for(let appointment of user.appointments){ %>
-                    <li> You have an appointment at <%= appointment.date %> starting at hour <%= appointment.hour %>. </li>
-                <% } %>
-            </ul>
+
             
+            <section class="container sec tabs" id="gallery" style="padding-top: 2rem;">
+                <div class="container">
+                    <div class="row">
+                    <% for(let appointment of user.appointments) { %>
+                    <div class="col-lg-4 mb-3">
+                      <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">  RANDEVU .</h5>
+                            <p class="card-text"><%= appointment.date %></p>
+                            <p class="card-text"><%= appointment.hour %></p>
+                            <% if( appointment.isApproved ){ %>
+                                <button type="button" class="btn btn-success" disabled> Accepted! </button>
+                            <%  %>
+                            <% }else { %>
+                                <button type="button" class="btn btn-danger" disabled> Not Accepted Yet! </button>
+                            <% } %>
+                            </form> 
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                </div>
+            </section>
+
+
+
             </section>
             
         </div>

@@ -86,7 +86,7 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1>Pick your time from the calendar...</h1>        
+                <h1 style="margin-left: 13px">Pick date from the calendar...</h1>        
                 <script src="/scripts/jquery.js"></script>
                 <script src="/scripts/jquery.datetimepicker.full.js"></script>
                 
@@ -95,6 +95,7 @@
                 <input type="text" id="datetime" name="datevalue" autocomplete="off">
                 <p id="try">INPUT</p>
 
+                <h1>Pick hour from the calendar...</h1>    
                 <select name="hour" class = "form-control input-lg" placeholder="Choose hour">
                     <option value="08:00">08:00</option>
                     <option value="09:00">09:00</option>
@@ -114,8 +115,11 @@
                     <option value="23:00">23:00</option>
                     <option value="24:00">24:00</option>
                 </select> 
-
-                <button type="submit" class="btn btn-primary btn-lg float-right">Submit</button>
+                <% if( isloggedIn == false ){ %>
+                    <button type="submit" class="btn btn-primary btn-lg float-right" disabled> Submit</button>
+                <% }else { %>
+                    <button type="submit" class="btn btn-primary btn-lg float-right"> Submit</button>
+                <% } %>
             </form>
             </div>
             </div>
