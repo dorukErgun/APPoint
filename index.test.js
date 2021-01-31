@@ -37,15 +37,12 @@ describe('#facilitySchema',()=>{
     })
 })
 
-/*
+
 const getDateSchema = require('./models/appointment');
-describe('#appointmentSchema - date',()=>{
-    it('should be object.',()=>{
+describe('#appointmentSchema',()=>{
+    it('should be an object.',()=>{
         const dateSchema = getDateSchema();
-        expect(_.isObject(dateSchema)).to.be.true;
+        _.isObject(dateSchema).should.be.true;
     })
 })
-*/
-
-
 

@@ -16,4 +16,7 @@ getDateSchema = ()=> dateSchema;
 module.exports = { getDateSchema };
 */
 ///
+getDateSchema = ()=> dateSchema;
+module.exports= {getDateSchema};
+
 module.exports = mongoose.Schema(dateSchema);
