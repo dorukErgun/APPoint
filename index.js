@@ -103,11 +103,6 @@ app.post('/logout', (req, res) =>
     res.redirect('/');
 })
 
-app.get('/test', (req, res) =>
-{
-    res.render('facilitydashboard');
-})
-
 app.get('/corporatelogin', (req, res) =>
 {
     res.sendFile(__dirname + '/public/html/corporatelogin.html');
@@ -125,13 +120,18 @@ app.post('/corporatelogin', async (req, res) =>
         if(isValid)
         {
             req.session.user_id = foundUser._id;
-            res.redirect('/profile');
+            res.redirect('/facilitydashboard');
         }
         else
         {
-            res.redirect('/login');
+            res.redirect('/corporatelogin');
         }
     }
+})
+
+app.get('/facilitydashboard', requireLogin, (req, res) =>
+{
+    res.render('facilitydashboard');
 })
 
 app.get('/signup', (req, res) =>
