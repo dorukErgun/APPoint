@@ -138,8 +138,16 @@
 
         <script>
             var hourOptions = document.querySelectorAll("option");
-            var toDisable = "<%= appointment_string %>";
-            console.log(toDisable);
+            var string;
+            var choosen_date;
+            var list = [];
+            <% for(var i=0; i<facility.appointments.length-1; i++){ %>
+                string = "<%= facility.appointments[i].date + " " + facility.appointments[i].hour %>";
+                list.push(string);
+            <% } %>
+            //console.log(toDisable);
+
+            var toDisable = list;
 
             $("#datetime").on("change",function(){
 
@@ -149,14 +157,12 @@
                 }
 
                 choosen_date = $(this).val();
-                console.log(choosen_date);
                 p.textContent = choosen_date;
 
                 for(var i=0; i<toDisable.length; i++){
-                    console.log(toDisable.slice(0,10))
-                    if(toDisable.slice(0,10) == choosen_date){
+                    if(toDisable[i].slice(0,10) === choosen_date){
                         for(var j=0; j<hourOptions.length; j++){
-                            if(toDisable.slice(11,16) === hourOptions[j].textContent){
+                            if(toDisable[i].slice(11,16) === hourOptions[j].textContent){
                                 hourOptions[j].setAttribute("disabled", "true");
                                 hourOptions[j].classList.add("disabled-option");
                             }

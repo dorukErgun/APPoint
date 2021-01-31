@@ -251,17 +251,15 @@ app.get('/:facilitytype/:facilityname', async (req, res) => {
         }
     }
 
-    console.log(appointment_string);
-
     if(req.session.user_id)
     {
         const isloggedIn = true;
-        res.render('facility', {facility, facilityType, isloggedIn, appointment_string});
+        res.render('facility', {facility, facilityType, isloggedIn});
     }
     else
     {
         const isloggedIn = false;
-        res.render('facility', {facility, facilityType, isloggedIn, appointment_string});
+        res.render('facility', {facility, facilityType, isloggedIn});
     }
     
 })
