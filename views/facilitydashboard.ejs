@@ -92,7 +92,7 @@
             <div class="container">
                 <div class="row">
                 <% for(let appointment of facility.appointments) { %>
-                    <% if(!appointment.isApproved){ %>
+                    <% if(!(appointment.isDeleted || appointment.isApproved)){ %>
                         <div class="col-lg-4 mb-3">
                         <div class="card" style="border-color: #FF5722; border-width: 10px; border-radius: 15%;">
                         <div class="card-body">
@@ -103,7 +103,7 @@
                         <form href="/" action="" method="post" accept-charset="utf-8" class="form" role="form">
                             <input type="text" id="datetime" name="datevalue" autocomplete="off" style="display:none">
                             <script>
-                                document.getElementById("datetime").textContent = "<%= appointment.date + " " + appointment.hour %>";
+                                document.getElementById("datetime").value = "<%= appointment.date + " " + appointment.hour %>";
                             </script>
                             <button type="button submit" name="ar" value="t" class="btn btn-success" >Accept </button>
                             <button type="button sbumit" name="ar" value="f" class="btn btn-danger"> Refuse</button>

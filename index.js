@@ -136,6 +136,95 @@ app.get('/facilitydashboard/:facilityname', requireLogin, async (req, res) =>
     res.render('facilitydashboard', {facility});
 })
 
+app.post('/facilitydashboard/:facilityname', requireLogin, async (req, res) => 
+{
+    const {datevalue, ar} = req.body;
+    var parsedDate = datevalue.split(' ');
+    /*console.log("DATEVALUE : " + datevalue);
+    console.log(parsedDate[0]); // date
+    console.log(parsedDate[1]); // hour
+    console.log(ar); // t or f*/
+
+    const facilityName = req.params.facilityname;
+
+
+    const facility = await Facility.findOne({name : facilityName});
+    
+
+
+    if(ar == 't')
+    {
+        
+        Facility.updateOne(
+            { 'appointments.date' : parsedDate[0],
+              'appointments.hour' : parsedDate[1]},
+            {
+                "$set":
+                    {
+                        "appointments.$.isApproved": true
+                    }
+            }
+        ,(err) =>
+        {
+            console.log(err);
+        });
+
+        User.updateOne(
+            { 'appointments.date' : parsedDate[0],
+              'appointments.hour' : parsedDate[1]},
+            {
+                "$set":
+                    {
+                        "appointments.$.isApproved": true
+                    }
+            }
+        ,(err) =>
+        {
+            console.log(err);
+        });
+
+
+    }
+    else if(ar == 'f')
+    {
+        console.log("F");
+        Facility.updateOne(
+            { 'appointments.date' : parsedDate[0],
+              'appointments.hour' : parsedDate[1]},
+            {
+                "$set":
+                    {
+                        "appointments.$.isDeleted": true
+                    }
+            }
+        ,(err) =>
+        {
+            console.log(err);
+        });
+
+        console.log("F");
+        User.updateOne(
+            { 'appointments.date' : parsedDate[0],
+              'appointments.hour' : parsedDate[1]},
+            {
+                "$set":
+                    {
+                        "appointments.$.isDeleted": true
+                    }
+            }
+        ,(err) =>
+        {
+            console.log(err);
+        });
+    }
+
+    const redirect = '/facilitydashboard/' + req.params.facilityname;
+    console.log(redirect);
+    res.redirect(redirect);
+
+
+})
+
 app.get('/signup', (req, res) =>
 {
     res.sendFile(__dirname + '/public/html/signup.html');
@@ -171,7 +260,7 @@ app.post('/signup', async (req, res) =>
         })
 
         req.session.user_id = newUser._id;
-        console.log(req.session.user_id);
+        
 
         const update = { userId : req.session.user_id};
 
@@ -237,7 +326,6 @@ app.get('/:facilitytype/:facilityname', async (req, res) => {
     const facilityType = req.params.facilitytype;
     const facilityName = req.params.facilityname;
     const facility = await Facility.findOne({ category: facilityType, name : facilityName});
-    console.log(facility);
 
     var appointment_string = "";
 
@@ -270,14 +358,12 @@ app.get('/:facilitytype/:facilityname', async (req, res) => {
 app.post('/:facilitytype/:facilityname', async (req, res) => 
 {
     const {datevalue, hour} = req.body;
-    console.log(datevalue);
-    console.log(hour);
+
 
 
     let user = await User.findOne({userId : req.session.user_id});
 
     const userId = user._id;
-    console.log(user.email);
 
     //create()
     const update = 
@@ -285,7 +371,8 @@ app.post('/:facilitytype/:facilityname', async (req, res) =>
         date : datevalue,
         hour : hour,
         email : user.email,
-        isApproved : false
+        isApproved : false,
+        isDeleted : false
     }
 
     let facility =  await Facility.findOne({name : req.params.facilityname});
@@ -300,7 +387,7 @@ app.post('/:facilitytype/:facilityname', async (req, res) =>
                 }
         }
     ).then(data => {
-        console.log(data);
+        
     })
 
     
@@ -313,7 +400,7 @@ app.post('/:facilitytype/:facilityname', async (req, res) =>
                 }
         }
     ).then(data => {
-        console.log(data);
+        
     })
 
     res.redirect('/profile');
