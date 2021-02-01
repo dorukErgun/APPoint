@@ -82,13 +82,15 @@
                     <div class="col-lg-4 mb-3">
                       <div class="card">
                           <div class="card-body">
+                            <% if(!appointment.isDeleted){ %> 
                             <h5 class="card-title">  RANDEVU .</h5>
                             <p class="card-text"><%= appointment.date %></p>
                             <p class="card-text"><%= appointment.hour %></p>
-                            <% if( appointment.isApproved ){ %>
+                            <% } %> 
+                            <% if(appointment.isApproved ){ %>
                                 <button type="button" class="btn btn-success" disabled> Accepted! </button>
                             <%  %>
-                            <% }else { %>
+                            <% }else if(!appointment.isDeleted){ %>
                                 <button type="button" class="btn btn-danger" disabled> Not Accepted Yet! </button>
                             <% } %>
                             </form> 

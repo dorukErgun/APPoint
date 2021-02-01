@@ -18,7 +18,7 @@ async function create()
 {
     const newFacility = new Facility(
         {
-        name : "vapianorand1903",
+        name : "dorukcan",
         password : "admin",
         image : "vapiano.jpeg",
         about : "İtalyan Lezzetleri, Pizza, Makarna, Salata ve Tatlılar",
@@ -41,16 +41,8 @@ async function create()
         console.log(e);
         })
 
-        req.session.user_id = newUser._id;
-
-        const update = { userId : req.session.user_id};
-
-        // `doc` is the document _before_ `update` was applied
-        await Facility.findOneAndUpdate({name : "vapianorand1903"}, update);
-
 }
 
-create()
 
 async function saveDb(newFacility) 
 {
@@ -71,8 +63,8 @@ async function saveDb(newFacility)
 //create()
 const update = 
 {
-    date : '14/05/2021',
-    hour : '14.40',
+    date : '14.05.2030',
+    hour : '15.00',
     email : 'Dorukb@gmail.com',
     isApproved : false
 }
@@ -81,7 +73,6 @@ async function test()
 {
     let facility =  await Facility.findOne({name : 'vapianorand585858'});
     const id = facility._id;
-    console.log(id);
 
     Facility.updateOne(
         { "_id": id},
@@ -96,4 +87,5 @@ async function test()
     }) 
 }
 
+create()
 
