@@ -40,7 +40,7 @@ back to user, facility calendar is updated.
 
 ## Related Diagrams
 
-![Screenshot](pmd.pdf)
+<img src="https://user-images.githubusercontent.com/32718897/108908451-5fa5a400-7634-11eb-9f41-1f813ba5eabc.PNG" width="90%"></img>
 
 ## Tool
 
