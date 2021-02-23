@@ -40,8 +40,11 @@ back to user, facility calendar is updated.
 
 ## Related Diagrams
 
+### Use Case Diagram
+<img src="https://user-images.githubusercontent.com/32718897/108908752-bd39f080-7634-11eb-93a6-1e81c6c93021.png" width="90%"></img>
+
 ### Process Model Diagrams
 <img src="https://user-images.githubusercontent.com/32718897/108908451-5fa5a400-7634-11eb-9f41-1f813ba5eabc.PNG" width="90%"></img>
 
-## Tool
+## Tools Used For This Project
 
