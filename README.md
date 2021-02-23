@@ -40,7 +40,7 @@ back to user, facility calendar is updated.
 
 ## Related Diagrams
 
-![Screenshot](Process Model Diagram.pdf)
+![Screenshot](../master/Process Model Diagram.pdf)
 
 ## Tool
 
