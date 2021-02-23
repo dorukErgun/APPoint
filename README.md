@@ -41,10 +41,11 @@ back to user, facility calendar is updated.
 ## Related Diagrams
 
 ### Use Case Diagram
-<img src="https://user-images.githubusercontent.com/32718897/108908752-bd39f080-7634-11eb-93a6-1e81c6c93021.png" width="90%"></img>
+![ucd](https://user-images.githubusercontent.com/32718897/108908957-fa9e7e00-7634-11eb-9222-2432642954b9.jpg)
 
 ### Process Model Diagrams
 <img src="https://user-images.githubusercontent.com/32718897/108908451-5fa5a400-7634-11eb-9f41-1f813ba5eabc.PNG" width="90%"></img>
 
 ## Tools Used For This Project
 
+For front end, besides basic HTML, CSS and JS, Bootstrap 4 framework and JQuery was used. For the backend parts, Node.js, Express.js was used. MongoDB used as a database service.
