@@ -18,12 +18,12 @@ async function create()
 {
     const newFacility = new Facility(
         {
-        name : "dorukcan",
+        name : "annie's",
         password : "admin",
-        image : "vapiano.jpeg",
-        about : "İtalyan Lezzetleri, Pizza, Makarna, Salata ve Tatlılar",
+        image : "annieskitchen.jpeg",
+        about : "Annie's Kitchen is THE vegan restaurant of the Lille metropolis!",
         number : "555 123 123",
-        adress : "Suadiye Istanbul",
+        adress : "Lille",
         category : "restaurants"
         });
 
@@ -71,7 +71,7 @@ const update =
 
 async function test()
 {
-    let facility =  await Facility.findOne({name : 'vapianorand585858'});
+    let facility =  await Facility.findOne({name : 'vapiano'});
     const id = facility._id;
 
     Facility.updateOne(
